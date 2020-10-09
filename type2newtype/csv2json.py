@@ -4,8 +4,7 @@ import json
 #import time
 
 with open('D:/test.csv', 'r') as f:
-    all_strs = f.read()
-    one_strs = all_strs.split('\n') #全部数据
+    lines = f.read().split('\n') #全部数据
 
 output_data = []
 _id = 0
