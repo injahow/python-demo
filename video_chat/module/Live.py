@@ -7,7 +7,6 @@ import zlib
 
 import cv2
 from numpy import ndarray
-
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtGui import QImage, QImageReader
 from PyQt5.QtCore import QBuffer, QByteArray, QIODevice, QThread, pyqtSignal

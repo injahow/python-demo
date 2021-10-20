@@ -102,6 +102,11 @@
       <height>141</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="title">
      <string>功能</string>
     </property>
@@ -146,7 +151,7 @@
       <rect>
        <x>90</x>
        <y>20</y>
-       <width>181</width>
+       <width>191</width>
        <height>41</height>
       </rect>
      </property>
@@ -164,7 +169,7 @@
       <rect>
        <x>90</x>
        <y>80</y>
-       <width>181</width>
+       <width>191</width>
        <height>41</height>
       </rect>
      </property>
@@ -180,7 +185,7 @@
     <widget class="QPushButton" name="pushButton_start">
      <property name="geometry">
       <rect>
-       <x>280</x>
+       <x>290</x>
        <y>80</y>
        <width>91</width>
        <height>41</height>
@@ -210,7 +215,7 @@
       </font>
      </property>
      <property name="text">
-      <string>目标IP</string>
+      <string>目标IP：</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_start_3">
@@ -246,13 +251,13 @@
       </font>
      </property>
      <property name="text">
-      <string>广播IP</string>
+      <string>广播IP：</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_start_2">
      <property name="geometry">
       <rect>
-       <x>280</x>
+       <x>290</x>
        <y>20</y>
        <width>91</width>
        <height>41</height>
@@ -271,9 +276,9 @@
      <property name="geometry">
       <rect>
        <x>490</x>
-       <y>20</y>
+       <y>80</y>
        <width>101</width>
-       <height>101</height>
+       <height>41</height>
       </rect>
      </property>
      <property name="font">
@@ -283,6 +288,24 @@
      </property>
      <property name="text">
       <string>关闭连接</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_get_ip">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>20</y>
+       <width>101</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>设置广播</string>
      </property>
     </widget>
    </widget>

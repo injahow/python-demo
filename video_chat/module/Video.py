@@ -99,6 +99,7 @@ class VideoClient(QThread):  # 视频接收方
             self.to_port = configs['chat']['to_port']
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.stop_run = False
+        self.wait_recv = True
 
     def __del__(self):
         self.stop()

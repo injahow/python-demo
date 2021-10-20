@@ -4,7 +4,8 @@
 import sys
 import time
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
+import netifaces
+from PyQt5.QtWidgets import QApplication, QInputDialog, QMainWindow, QMessageBox
 from PyQt5.QtGui import QImage, QPixmap
 from ui.Ui_main import Ui_MainWindow
 from module.Message import MessageServer, MessageClient
@@ -24,7 +25,7 @@ class MyMainForm(QMainWindow, Ui_MainWindow):
         self.pushButton_start.clicked.connect(
             self.run_live_desktop_btn)  # 广播桌面
         self.pushButton_start_4.clicked.connect(self.run_live_user_btn)  # 广播用户
-
+        self.pushButton_get_ip.clicked.connect(self.get_ips)  # 获取广播地址
         self.pushButton_close.clicked.connect(self.close_all)  # 关闭连接
         self.pushButton_end.clicked.connect(self.close)  # 退出程序
 
@@ -139,6 +140,25 @@ class MyMainForm(QMainWindow, Ui_MainWindow):
 
     def run_live_user_btn(self):
         self.run_live_server('camera')
+
+    def get_ips(self):
+        intfs = netifaces.interfaces()
+
+        data = []
+        for intf in intfs:
+            res = netifaces.ifaddresses(intf)
+            if netifaces.AF_INET in res:  # ipv4
+                ipv4 = res[netifaces.AF_INET][0]
+                data.append('addr:' + ipv4['addr'] +
+                            ',broadcast:' + ipv4['broadcast'])
+
+        item, ok = QInputDialog.getItem(
+            self, '选择广播IP', '本地IP列表：', data, 0, False)
+
+        if ok and item:
+            text = item.split(',')
+            # self.lineEdit_ip.setText(text[0].split(':')[1])
+            self.lineEdit_broadcast.setText(text[1].split(':')[1])
 
     def run_live_server(self, live_type):
         if self.live_server is None or self.live_server.stop_run:
