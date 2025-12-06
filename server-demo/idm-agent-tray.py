@@ -20,8 +20,15 @@ from PIL import Image, ImageDraw
 import tkinter as tk
 from tkinter import messagebox, filedialog
 
-os.makedirs("logs", exist_ok=True)
-log_path = os.path.join("logs", "idm_agent.log")
+# 获取程序所在目录
+if getattr(sys, 'frozen', False):
+    app_dir = os.path.dirname(sys.executable)
+else:
+    app_dir = os.path.dirname(os.path.abspath(__file__))
+# 日志目录
+log_dir = os.path.join(app_dir, "logs")
+os.makedirs(log_dir, exist_ok=True)
+log_path = os.path.join(log_dir, "idm_agent.log")
 logger = logging.getLogger("IDM-Agent")
 logger.setLevel(logging.INFO)
 
@@ -40,7 +47,7 @@ if not logger.handlers:
     )
     file_handler.setFormatter(file_formatter)
     logger.addHandler(file_handler)
-
+    # 控制台日志
     console_handler = logging.StreamHandler()
     console_formatter = logging.Formatter('[%(levelname)s] %(message)s')
     console_handler.setFormatter(console_formatter)
@@ -53,7 +60,7 @@ except ImportError:
     reg = None
 
 # --- 配置 ---
-CONFIG_FILE = "idm_agent_config.json"
+CONFIG_FILE = os.path.join(app_dir, "idm_agent_config.json")
 TIME_WINDOW_MS = 30 * 1000  # 30秒，单位：毫秒
 
 # --- 配置管理 ---
